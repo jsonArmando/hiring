@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	<form th:action="@{/form}" th:object="${administrator}" method="post">
+		<table>
+			<tr>
+				<td>Primer Nombre</td>
+				<td><input type="text" th:field="*{primerNombre}" /></td>
+			</tr>
+			<tr>
+				<td>Segundo Nombre</td>
+				<td><input type="text" th:field="*{segundoNombre}" /></td>
+			</tr>
+			<tr>
+				<td>Primer Apellido</td>
+				<td><input type="text" th:field="*{primerApellido}" /></td>
+			</tr>
+			<tr>
+				<td>Segundo Apellido</td>
+				<td><input type="text" th:field="*{segundoApellido}" /></td>
+			</tr>
+			<tr>
+				<td>Ciudad</td>
+				<td><input type="text" th:field="*{ciudadNacimiento}" /></td>
+			</tr>
+			<tr>
+				<td>Departamento</td>
+				<td><input type="text" th:field="*{ciudadNacimiento}" /></td>
+			</tr>
+			<tr>
+				<td>Celular</td>
+				<td><input type="text" th:field="*{celular}" /></td>
+			</tr>
+			<tr>
+				<td>Dirección</td>
+				<td><input type="text" th:field="*{direccion}" /></td>
+			</tr>
+			<tr>
+				<td>Tipo de Identificación</td>
+				<td><input type="text" th:field="*{tipoIdentificacion}" /></td>
+			</tr>
+			<tr>
+				<td>Número de Identificación</td>
+				<td><input type="text" th:field="*{numeroIdentificacion}" /></td>
+			</tr>
+			<tr>
+				<td>Correo</td>
+				<td><input type="text" th:field="*{correoElectronico}" /></td>
+			</tr>
+			<tr>
+			<td input type="submit" value="Create Admistrator"></td>
+			</tr>
+		</table>
+		<input type="hidden" th:field="*{consecutivo}" />
+	</form>
+</body>
+</html>
