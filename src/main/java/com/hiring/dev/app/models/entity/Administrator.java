@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,6 +52,11 @@ public class Administrator implements Serializable{
 	private Date fechaRegistro;
 	@Column(name="EMAIL")
 	private String correoElectronico;
+	@PrePersist
+	public void prePersist() {
+		fechaNacimiento = new Date();
+		fechaRegistro = new Date();
+	}
 	public Long getConsecutivo() {
 		return consecutivo;
 	}

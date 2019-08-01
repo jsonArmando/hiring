@@ -21,5 +21,11 @@ public class IAdministratorDaoImpl implements IAdministratorDaoServices{
 	public List<Administrator> findAll() {
 		return em.createQuery("FROM Administrator").getResultList();
 	}
+	@Override
+	@Transactional
+	public void save(Administrator admin) {
+		em.persist(admin);
+		
+	}
 
 }
