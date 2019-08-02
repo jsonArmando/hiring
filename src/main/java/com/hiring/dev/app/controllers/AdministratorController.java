@@ -22,7 +22,6 @@ import com.hiring.dev.app.models.entity.dao.service.IAdministratorService;
 @Controller
 public class AdministratorController {
 	@Autowired
-	//@Qualifier("ADMINISTRATOR")
 	private IAdministratorService administrator;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
