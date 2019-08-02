@@ -20,6 +20,8 @@
 				<th>Número de Identificación</th>
 				<th>Fecha de Registro</th>
 				<th>Correo</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,6 +38,8 @@
 				<th th:text="${administrator.numeroIdentificacion}"></th>
 				<th th:text="${administrator.fechaRegistro}"></th>
 				<th th:text="${administrator.correoElectronico}"></th>
+				<th><a th:href="@{/form/}+ ${administrator.consecutivo}" th:text="'edit'"/></th>
+				<th><a th:href="@{/delete/}+ ${administrator.consecutivo}" th:text="'delete'"/></th>
 			</tr>
 		</tbody>
 	</table>

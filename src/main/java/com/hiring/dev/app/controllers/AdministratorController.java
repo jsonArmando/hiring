@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,13 +17,13 @@ import com.hiring.dev.app.models.entity.Administrator;
 import com.hiring.dev.app.models.entity.Department;
 import com.hiring.dev.app.models.entity.dao.IAdministratorDaoServices;
 import com.hiring.dev.app.models.entity.dao.IDepartmentDaoServices;
+import com.hiring.dev.app.models.entity.dao.service.IAdministratorService;
 
 @Controller
 public class AdministratorController {
 	@Autowired
-	@Qualifier("ADMINISTRATOR")
-	private IAdministratorDaoServices administrator;
-	private IDepartmentDaoServices department;
+	//@Qualifier("ADMINISTRATOR")
+	private IAdministratorService administrator;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
@@ -37,6 +38,18 @@ public class AdministratorController {
 		model.put("title", "Administrator Form");
 		return "form";
 	}
+	@RequestMapping(value="/form/{id}")
+	public String edit(@PathVariable(value="id") Long id, Map<String, Object> model) {
+		Administrator admin = null;
+		if(id>0) {
+			admin=administrator.findOne(id);
+		}else {
+			return "redirect:/list";
+		}
+		model.put("administrator", admin);
+		model.put("title", "Administrator Form");
+		return "form";
+	}
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String save(@Valid Administrator saveAdmin,BindingResult result, Model model) {
 		if(result.hasErrors()) {
@@ -46,9 +59,11 @@ public class AdministratorController {
 		administrator.save(saveAdmin);
 		return "redirect:list";
 	}
-	
-	public String listDep(Model model) {
-		model.addAttribute("department", department.findAll());
-		return null;
+	@RequestMapping(value="/delete/{id}")
+	public String delete(@PathVariable(value="id") Long id) {
+		if(id>0) {
+			administrator.delete(id);
+		}
+		return "redirect:/list";
 	}
 }
