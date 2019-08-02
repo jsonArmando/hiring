@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hiring.dev.app.models.entity.Administrator;
+import com.hiring.dev.app.models.entity.Department;
 import com.hiring.dev.app.models.entity.dao.IAdministratorDaoServices;
+import com.hiring.dev.app.models.entity.dao.IDepartmentDaoServices;
 
 @Controller
 public class AdministratorController {
 	@Autowired
 	@Qualifier("ADMINISTRATOR")
 	private IAdministratorDaoServices administrator;
+	private IDepartmentDaoServices department;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
@@ -42,5 +45,10 @@ public class AdministratorController {
 		}
 		administrator.save(saveAdmin);
 		return "redirect:list";
+	}
+	
+	public String listDep(Model model) {
+		model.addAttribute("department", department.findAll());
+		return null;
 	}
 }
