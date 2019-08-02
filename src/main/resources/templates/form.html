@@ -10,7 +10,9 @@
 		<table>
 			<tr>
 				<td>Primer Nombre</td>
-				<td><input type="text" th:field="*{primerNombre}" /></td>
+				<td><input type="text" th:field="*{primerNombre}" />
+				<small th:if="${#fields.hasErrors('primerNombre')}" th:errors="*{primerNombre}"></small>
+				</td>
 			</tr>
 			<tr>
 				<td>Segundo Nombre</td>
@@ -18,7 +20,9 @@
 			</tr>
 			<tr>
 				<td>Primer Apellido</td>
-				<td><input type="text" th:field="*{primerApellido}" /></td>
+				<td><input type="text" th:field="*{primerApellido}" />
+				<small th:if="${#fields.hasErrors('primerApellido')}" th:errors="*{primerApellido}"></small>
+				</td>
 			</tr>
 			<tr>
 				<td>Segundo Apellido</td>
@@ -50,10 +54,17 @@
 			</tr>
 			<tr>
 				<td>Correo</td>
-				<td><input type="text" th:field="*{correoElectronico}" /></td>
+				<td><input type="email" th:field="*{correoElectronico}" /></td>
 			</tr>
 			<tr>
-			<td><input type="submit" value="Create Admistrator"></td>
+				<td>Fecha de Nacimiento</td>
+				<td><input type="date" th:field="*{fechaNacimiento}" /></td>
+			</tr>
+			<td>Fecha de Registro</td>
+			<td><input type="date" th:field="*{fechaRegistro}"/></td>
+			<tr>
+			<tr>
+				<td><input type="submit" value="Create Admistrator"></td>
 			</tr>
 		</table>
 		<input type="hidden" th:field="*{consecutivo}" />

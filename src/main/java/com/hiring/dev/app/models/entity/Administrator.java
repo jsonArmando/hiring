@@ -12,6 +12,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Administrator")
@@ -25,6 +31,8 @@ public class Administrator implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long consecutivo;
+	@NotEmpty //Campo Requerido
+	@Size(min=4, max=100)
 	@Column(name="FIRST_NAME")
 	private String primerNombre;
 	@Column(name="SECOND_NAME")
@@ -34,6 +42,7 @@ public class Administrator implements Serializable{
 	@Column(name="SECOND_SURNAMES")
 	private String segundoApellido;
 	@Column(name="DATE_BIRTH")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	@Column(name="CITY")
@@ -48,15 +57,19 @@ public class Administrator implements Serializable{
 	private Long celular;
 	@Column(name="DIRECTION")
 	private String Direccion;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_REGISTER")
+	@NotNull
 	private Date fechaRegistro;
 	@Column(name="EMAIL")
+	@Email
 	private String correoElectronico;
-	@PrePersist
-	public void prePersist() {
-		fechaNacimiento = new Date();
-		fechaRegistro = new Date();
-	}
+//	@PrePersist
+//	public void prePersist() {
+//		fechaNacimiento = new Date();
+//		fechaRegistro = new Date();
+//	}
 	public Long getConsecutivo() {
 		return consecutivo;
 	}
