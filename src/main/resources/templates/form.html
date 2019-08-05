@@ -6,13 +6,14 @@
 </head>
 <body>
 	<h1 th:text="${title}"></h1>
-	<form th:action="@{/form}" th:object="${administrator}" method="post">
+	<form th:action="@{/form}" th:object="${administrator}" method="post"
+		enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Primer Nombre</td>
-				<td><input type="text" th:field="*{primerNombre}" />
-				<small th:if="${#fields.hasErrors('primerNombre')}" th:errors="*{primerNombre}"></small>
-				</td>
+				<td><input type="text" th:field="*{primerNombre}" /> <small
+					th:if="${#fields.hasErrors('primerNombre')}"
+					th:errors="*{primerNombre}"></small></td>
 			</tr>
 			<tr>
 				<td>Segundo Nombre</td>
@@ -20,9 +21,9 @@
 			</tr>
 			<tr>
 				<td>Primer Apellido</td>
-				<td><input type="text" th:field="*{primerApellido}" />
-				<small th:if="${#fields.hasErrors('primerApellido')}" th:errors="*{primerApellido}"></small>
-				</td>
+				<td><input type="text" th:field="*{primerApellido}" /> <small
+					th:if="${#fields.hasErrors('primerApellido')}"
+					th:errors="*{primerApellido}"></small></td>
 			</tr>
 			<tr>
 				<td>Segundo Apellido</td>
@@ -60,11 +61,16 @@
 				<td>Fecha de Nacimiento</td>
 				<td><input type="date" th:field="*{fechaNacimiento}" /></td>
 			</tr>
-			<td>Fecha de Registro</td>
-			<td><input type="date" th:field="*{fechaRegistro}"/></td>
 			<tr>
+				<td>Fecha de Registro</td>
+				<td><input type="date" th:field="*{fechaRegistro}" /></td>
+			</tr>
 			<tr>
 				<td><input type="submit" value="Create Admistrator"></td>
+			</tr>
+			<tr>
+				<label for="file">Imagen</label>
+				<input type="file" name="file" />
 			</tr>
 		</table>
 		<input type="hidden" th:field="*{consecutivo}" />

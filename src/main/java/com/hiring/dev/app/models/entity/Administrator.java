@@ -65,6 +65,8 @@ public class Administrator implements Serializable{
 	@Column(name="EMAIL")
 	@Email
 	private String correoElectronico;
+	@Column(name="IMAGE")
+	private String foto;
 //	@PrePersist
 //	public void prePersist() {
 //		fechaNacimiento = new Date();
@@ -153,5 +155,11 @@ public class Administrator implements Serializable{
 	}
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 }
