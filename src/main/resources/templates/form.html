@@ -72,6 +72,11 @@
 				<label for="file">Imagen</label>
 				<input type="file" name="file" />
 			</tr>
+			<!-- <tr>
+				<img style="max-width: 10%" th:if="${#strings.length(administrator.foto) >0}"
+					th:src="@{'/upload/' + ${administrator.foto}}"
+					th:alt="${administrator.foto}" />
+			</tr>-->
 		</table>
 		<input type="hidden" th:field="*{consecutivo}" />
 	</form>

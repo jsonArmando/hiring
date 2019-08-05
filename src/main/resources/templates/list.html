@@ -26,10 +26,9 @@
 		</thead>
 		<tbody>
 			<tr th:each="administrator: ${administrator}">
-				<th
-					th:text="${administrator.primerNombre + ' ' +administrator.segundoNombre}"></th>
-				<th
-					th:text="${administrator.primerApellido +' ' + administrator.segundoApellido}"></th>
+				<th><a th:href="@{/ver/} + ${administrator.consecutivo}"  th:text="${administrator.consecutivo}"/></th>
+				<th th:text="${administrator.primerNombre + ' ' +administrator.segundoNombre}"></th>
+				<th th:text="${administrator.primerApellido +' ' + administrator.segundoApellido}"></th>
 				<th th:text="${administrator.ciudadNacimiento}"></th>
 				<th th:text="${administrator.departamentoNacimiento}"></th>
 				<th th:text="${administrator.celular}"></th>
